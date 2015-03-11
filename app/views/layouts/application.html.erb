@@ -8,6 +8,16 @@
 </head>
 <body>
 
+<% if signed_in? %>
+  <h3>Current User: <%= current_user.name %></h3>
+
+  <%= link_to 'Sign Out', sign_out_path, method: :delete %>
+<% else %>
+  <p>Hi stranger! <%= link_to 'Sign In', new_session_path %></p>
+<% end %>
+
+<h3><%= flash[:notice] %></h3>
+
 <%= yield %>
 
 </body>
